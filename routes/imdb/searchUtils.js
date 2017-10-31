@@ -17,7 +17,7 @@ const insertBreaks = (movieTitlesString) => {
  * @return {object} - the results in JSON form
  */
 const toJSON = (text) => {
-  const re = /(.*)\s+\((\d\d\d\d)\)\s*\(*.*\)*/g;
+  const re = /(.*)\s+\((\d\d\d\d)\)\s*/g;
   let JsonString ='{ "movies":[';
   let execArray;
   while((execArray = re.exec(text)) !== null){
