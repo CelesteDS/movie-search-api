@@ -17,14 +17,14 @@ const insertBreaks = (movieTitlesString) => {
  * @return {object} - the results in JSON form
  */
 const toJSON = (text) => {
-  const re = /(.*)\s+\((\d\d\d\d)\)\s*/g;
-  let JsonString = '{ "movies":[';
+  if (typeof text !== 'string') throw new TypeError(`Expected a string. Got a ${typeof text}`);
+  const movieYearPattern = /(.*)\s+\((\d\d\d\d)\)\s*/g;
+  const movies = [];
   let execArray;
-  while ((execArray = re.exec(text)) !== null) {
-    JsonString += `{"name": "${execArray[1]}", "year": "${execArray[2]}"},`;
+  while ((execArray = movieYearPattern.exec(text)) !== null) {
+    movies.push({ name: execArray[1], year: execArray[2] });
   }
-  JsonString = `${JsonString.slice(0, -1)} ]}`; // remove that trailing comma or its not valid JSON
-  return JSON.parse(JsonString);
+  return JSON.stringify({ movies });
 };
 
 module.exports = { insertBreaks, toJSON };

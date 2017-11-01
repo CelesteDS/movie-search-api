@@ -20,7 +20,7 @@ const searchResult = (req, res) => {
     $('.result_text').children('small').each((ind, elem) => {
       theText = theText.replace($(elem).text(), '');
     });
-    res.send(toJSON(insertBreaks(theText).trim()));
+    res.send(toJSON(insertBreaks(theText)));
   });
 };
 
