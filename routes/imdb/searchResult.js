@@ -9,18 +9,19 @@ const searchResult = (req, res) => {
 
   rp(searchUrl).then((htmlString) => {
     const $ = cheerio.load(htmlString);
-    let theText = '';
+    let resultText = '';
     $('.findList').each((i, elem) => {
       if ($('h3', $(elem).parent()).text() === 'Titles') {
-        theText += $('.result_text', elem).text();
+        resultText += $('.result_text', elem).text();
         return false;
       }
       return true;
     });
     $('.result_text').children('small').each((ind, elem) => {
-      theText = theText.replace($(elem).text(), '');
+      resultText = resultText.replace($(elem).text(), '');
     });
-    res.send(toJSON(insertBreaks(theText)));
+    res.set('Content-Type', 'application/json');
+    res.send(toJSON(insertBreaks(resultText)));
   });
 };
 

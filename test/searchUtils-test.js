@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai').expect;
 
 const { insertBreaks, toJSON } = require('../routes/imdb/searchUtils');
 const { movieStringExample, movieStringOutputExample } = require('./lib/stringExamples');
