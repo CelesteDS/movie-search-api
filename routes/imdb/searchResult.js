@@ -22,6 +22,6 @@ const searchResult = (req, res) => {
     });
     res.send(toJSON(insertBreaks(theText).trim()));
   });
-}
+};
 
 module.exports = searchResult;

@@ -1,6 +1,7 @@
 const express = require('express');
-const app = express();
 const routes = require('./routes');
+
+const app = express();
 
 // Connect all routes
 app.use(routes);

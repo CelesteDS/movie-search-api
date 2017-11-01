@@ -18,14 +18,13 @@ const insertBreaks = (movieTitlesString) => {
  */
 const toJSON = (text) => {
   const re = /(.*)\s+\((\d\d\d\d)\)\s*/g;
-  let JsonString ='{ "movies":[';
+  let JsonString = '{ "movies":[';
   let execArray;
-  while((execArray = re.exec(text)) !== null){
+  while ((execArray = re.exec(text)) !== null) {
     JsonString += `{"name": "${execArray[1]}", "year": "${execArray[2]}"},`;
   }
-  JsonString = `${JsonString.slice(0, -1)} ]}` // remove that trailing comma or its not valid JSON
+  JsonString = `${JsonString.slice(0, -1)} ]}`; // remove that trailing comma or its not valid JSON
   return JSON.parse(JsonString);
-
-}
+};
 
 module.exports = { insertBreaks, toJSON };
